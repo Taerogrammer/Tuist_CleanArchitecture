@@ -72,13 +72,20 @@ extension Scheme {
         schemeName: String
     ) -> Scheme {
         let configuration: ConfigurationName = .configuration("Develop")
-        
+
         let buildAction = BuildAction.buildAction(targets: [TargetReference(stringLiteral: schemeName)])
-        
+
+        // Tests 타겟 참조 생성
+        let testAction = TestAction.targets(
+            [TestableTarget(stringLiteral: "\(schemeName)Tests")],
+            configuration: configuration
+        )
+
         return Scheme.scheme(
                 name: schemeName,
                 shared: true,
                 buildAction: buildAction,
+                testAction: testAction,
                 runAction: .runAction(configuration: configuration),
                 archiveAction: .archiveAction(configuration: configuration),
                 profileAction: .profileAction(configuration: configuration),

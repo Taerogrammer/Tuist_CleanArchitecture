@@ -13,6 +13,7 @@ extension Project {
         product: Product,
         dependencies: [TargetDependency],
         interfaceDependencies: [TargetDependency] = [],
+        testingDependencies: [TargetDependency] = [],
         hasInterface: Bool = false,
         hasTests: Bool = false,
         hasTesting: Bool = false,
@@ -38,7 +39,8 @@ extension Project {
                 hasExample: true,
                 hasInterface: true,
                 dependencies: dependencies,
-                interfaceDependencies: interfaceDependencies
+                interfaceDependencies: interfaceDependencies,
+                testingDependencies: testingDependencies
             )
 
         case let .domain(name):
@@ -51,7 +53,8 @@ extension Project {
                 hasTesting: hasTesting,
                 hasInterface: true,
                 dependencies: dependencies,
-                interfaceDependencies: interfaceDependencies
+                interfaceDependencies: interfaceDependencies,
+                testingDependencies: testingDependencies
             )
 
         case let .data(name):
@@ -62,7 +65,8 @@ extension Project {
                 hasTests: true,
                 hasInterface: true,
                 dependencies: dependencies,
-                interfaceDependencies: interfaceDependencies
+                interfaceDependencies: interfaceDependencies,
+                testingDependencies: testingDependencies
             )
 
         case let .general(name):
@@ -76,7 +80,8 @@ extension Project {
                 hasExample: hasExample,
                 hasInterface: hasInterface,
                 dependencies: dependencies,
-                interfaceDependencies: interfaceDependencies
+                interfaceDependencies: interfaceDependencies,
+                testingDependencies: testingDependencies
             )
         }
     }

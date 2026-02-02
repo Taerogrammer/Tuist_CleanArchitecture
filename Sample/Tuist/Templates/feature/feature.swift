@@ -32,10 +32,10 @@ let template = Template(
               templatePath: "../stencil/sample.stencil"),
         
         // MARK: Example
-        .file(path: "\(nameAttribute)Feature/Example/Resources/Sample.swift",
-              templatePath: "../stencil/sample.stencil"),
         .file(path: "\(nameAttribute)Feature/Example/Sources/AppDelegate.swift",
               templatePath: "../stencil/appDelegate.stencil"),
+        .file(path: "\(nameAttribute)Feature/Example/Sources/SceneDelegate.swift",
+              templatePath: "SceneDelegate.stencil"),
         .file(path: "\(nameAttribute)Feature/Example/Sources/\(nameAttribute)App.swift",
               templatePath: "../stencil/app.stencil"),
         
