@@ -31,7 +31,11 @@ public struct AppConfiguration {
     }
     
     public var autoCodeSigning: SettingsDictionary {
-        return SettingsDictionary().automaticCodeSigning(devTeam: "V25J6G45SP")
+        return SettingsDictionary().merging([
+            "CODE_SIGN_STYLE": "Automatic",
+            "CODE_SIGN_IDENTITY": "Apple Development",
+            "PROVISIONING_PROFILE_SPECIFIER": ""
+        ])
     }
     
     var setting: Settings {

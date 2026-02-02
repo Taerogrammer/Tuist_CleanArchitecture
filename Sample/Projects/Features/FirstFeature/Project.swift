@@ -15,7 +15,8 @@ let project = Project.configure(
     dependencies: [
     ],
     interfaceDependencies: [
-        .Core.core,
+        .Module.core,
+        .Module.sharedUI,
         .Domain.Sample.interface,
     ]
 )

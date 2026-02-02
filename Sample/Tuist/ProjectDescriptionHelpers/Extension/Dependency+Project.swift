@@ -7,8 +7,40 @@
 
 import ProjectDescription
 
-// MARK: - DataSource
 public extension TargetDependency.Module {
+    // MARK: - Foundation
+    static let designKit = dependency(
+        target: "DesignKit",
+        path: .relativeToCore(path: "DesignKit")
+    )
+
+    static let sharedUI = dependency(
+        target: "SharedUI",
+        path: .relativeToCore(path: "SharedUI")
+    )
+
+    static let core = dependency(
+        target: "Core",
+        path: .relativeToCore(path: "Core")
+    )
+
+    // MARK: - Data
+    static let data = dependency(
+        target: "Data",
+        path: .relativeData()
+    )
+
+    static let persistence = dependency(
+        target: "Persistence",
+        path: .relativePersistence()
+    )
+
+    static let networker = dependency(
+        target: "Networker",
+        path: .relativeToNetwork()
+    )
+
+    // MARK: - DataSource
     static let localDataSource = LocalDataSource.self
     static let remoteDataSource = RemoteDataSource.self
 
@@ -35,40 +67,6 @@ public extension TargetDependency.Module {
             path: .relativeRemoteDataSource()
         )
     }
-}
-
-public extension TargetDependency.Module {
-    static let data = dependency(
-        target: "Data",
-        path: .relativeData()
-    )
-
-    static let persistence = dependency(
-        target: "Persistence",
-        path: .relativePersistence()
-    )
-
-    static let shared = dependency(
-        target: "Shared",
-        path: .relativShared()
-    )
-
-    static let networker = dependency(
-        target: "Networker",
-        path: .relativeToNetwork()
-    )
-}
-
-public extension TargetDependency.Core {
-    static let designKit = dependency(
-        target: "DesignKit",
-        path: .relativeToCore(path: "DesignKit")
-    )
-
-    static let core = dependency(
-        target: "Core",
-        path: .relativeToCore(path: "Core")
-    )
 }
 
 public extension TargetDependency.App {

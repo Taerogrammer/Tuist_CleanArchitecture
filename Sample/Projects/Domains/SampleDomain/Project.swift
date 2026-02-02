@@ -5,6 +5,9 @@ let project = Project.configure(
     moduleType: .domain(name: "SampleDomain"),
     product: .staticFramework,
     dependencies: [
-        .Module.shared,
+        .Data.Sample.interface,
+    ],
+    interfaceDependencies: [
+        .Module.core,
     ]
 )

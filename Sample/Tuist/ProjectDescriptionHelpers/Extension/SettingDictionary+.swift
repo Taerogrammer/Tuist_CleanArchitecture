@@ -25,8 +25,13 @@ public extension SettingsDictionary {
         ]) { _, new in new }
 
     // 자동 코드 서명 기능 활성화
+    // Team ID를 명시하지 않아 누구나 자신의 Apple Developer 계정으로 실행 가능
     func configureAutoCodeSigning() -> SettingsDictionary {
-        return automaticCodeSigning(devTeam: "V25J6G45SP")
+        return merging([
+            "CODE_SIGN_STYLE": "Automatic",
+            "CODE_SIGN_IDENTITY": "Apple Development",
+            "PROVISIONING_PROFILE_SPECIFIER": ""
+        ])
     }
     
     func configureVersioning() -> SettingsDictionary {

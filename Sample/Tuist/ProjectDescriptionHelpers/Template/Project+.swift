@@ -52,7 +52,8 @@ extension Project {
         hasExample: Bool = false,
         hasInterface: Bool = false,
         dependencies: [TargetDependency],
-        interfaceDependencies: [TargetDependency] = []
+        interfaceDependencies: [TargetDependency] = [],
+        testingDependencies: [TargetDependency] = []
     ) -> Self {
         var targets: [Target] = []
         var schemes: [Scheme] = [Scheme.configureScheme(
@@ -86,18 +87,25 @@ extension Project {
         
         if hasTests {
             var testsDependencies: [TargetDependency] = [.target(name: name)]
-            
+
             if hasTesting {
-                let testingTarget = createFrameworkTarget(
+                var testingModuleDependencies = (hasInterface ? [TargetDependency.target(name: "\(name)Interface")] : [])
+                testingModuleDependencies.append(contentsOf: testingDependencies)
+
+                let testingTarget = Target.target(
                     name: "\(name)Testing",
-                    configuration: configuration,
+                    destinations: configuration.destination,
                     product: product,
-                    dependencies: hasInterface ? [.target(name: "\(name)Interface")] : []
+                    bundleId: "\(configuration.bundleIdentifier).\(name.lowercased())Testing",
+                    deploymentTargets: configuration.deploymentTarget,
+                    infoPlist: .default,
+                    sources: ["Testing/Sources/**"],
+                    dependencies: testingModuleDependencies
                 )
                 targets.append(testingTarget)
                 testsDependencies.append(.target(name: "\(name)Testing"))
             }
-            
+
             let testsTarget = createTestTarget(
                 name: name,
                 configuration: configuration,
