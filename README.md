@@ -1,4 +1,4 @@
-# tuist-template
+# Tuist_CleanArchitecture
 
 ## 📐 Architecture
 
