@@ -12,6 +12,5 @@ let project = Project.configure(
     moduleType: .general(name: "Core"),
     product: .staticFramework,
     dependencies: [
-        .Core.designKit,
     ]
 )

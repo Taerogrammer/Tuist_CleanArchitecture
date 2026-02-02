@@ -5,6 +5,8 @@ let project = Project.configure(
     moduleType: .domain(name: "FirstDomain"),
     product: .staticFramework,
     dependencies: [
-        .Module.shared,
+    ],
+    interfaceDependencies: [
+        .Module.core,
     ]
 )
